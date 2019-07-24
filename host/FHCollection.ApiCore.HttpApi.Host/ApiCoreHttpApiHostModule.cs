@@ -61,7 +61,13 @@ namespace FHCollection.ApiCore
                     options.FileSets.ReplaceEmbeddedByPhysical<ApiCoreApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}FHCollection.ApiCore.Application", Path.DirectorySeparatorChar)));
                 });
             }
-
+            //自动API控制器
+            Configure<AbpAspNetCoreMvcOptions>(options =>
+            {
+                options
+                    .ConventionalControllers
+                    .Create(typeof(ApiCoreApplicationModule).Assembly);
+            });
             context.Services.AddSwaggerGen(
                 options =>
                 {
@@ -100,16 +106,7 @@ namespace FHCollection.ApiCore
                     .PersistKeysToStackExchangeRedis(redis, "ApiCore-Protection-Keys");
             }
 
-            //自动API控制器
-            Configure<AbpAspNetCoreMvcOptions>(options =>
-            {
-                options
-                    .ConventionalControllers
-                    .Create(typeof(ApiCoreApplicationModule).Assembly, opts =>
-                     {
-                         opts.RootPath = "fh/api";
-                     });
-            });
+         
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

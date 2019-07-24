@@ -4,7 +4,7 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace FHCollection.ApiCore.EntityFrameworkCore
 {
-    [ConnectionStringName("ApiCore")]
+    [ConnectionStringName("Default")]
     public class ApiCoreDbContext : AbpDbContext<ApiCoreDbContext>, IApiCoreDbContext
     {
         public static string TablePrefix { get; set; } = ApiCoreConsts.DefaultDbTablePrefix;

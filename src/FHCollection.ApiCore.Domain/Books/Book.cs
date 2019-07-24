@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Domain.Entities;
 
 namespace FHCollection.ApiCore
 {
     /// <summary>
     /// 测试样例
     /// </summary>
-    public class Book : AuditedEntity<Guid>
+    public class Book : Entity<int>
     {
         public string Name { get; set; }
 

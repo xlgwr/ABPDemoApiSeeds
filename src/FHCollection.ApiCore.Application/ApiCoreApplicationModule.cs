@@ -18,7 +18,7 @@ namespace FHCollection.ApiCore
                  * validate the profile on application startup.
                  * See http://docs.automapper.org/en/stable/Configuration-validation.html for more info
                  * about the configuration validation. */
-                options.AddProfile<ApiCoreApplicationAutoMapperProfile>(validate: true);
+                options.AddProfile<ApiCoreApplicationAutoMapperProfile>();//validate: true
             });
         }
     }

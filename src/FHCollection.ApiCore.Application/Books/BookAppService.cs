@@ -17,11 +17,11 @@ namespace FHCollection.ApiCore.Books
     /// 启动模板使用AutoMapper库作为对象映射提供程序.你之前定义了映射, 因此它将按预期工作
     /// </summary>
     public class BookAppService :
-        AsyncCrudAppService<Book, BookDto, Guid, PagedAndSortedResultRequestDto,
+        AsyncCrudAppService<Book, BookDto, int, PagedAndSortedResultRequestDto,
                             CreateUpdateBookDto, CreateUpdateBookDto>,
         IBookAppService
     {
-        public BookAppService(IRepository<Book, Guid> repository)
+        public BookAppService(IRepository<Book, int> repository)
             : base(repository)
         {
 
