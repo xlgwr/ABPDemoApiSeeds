@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
 
 namespace FHCollection.ApiCore
 {
     /// <summary>
-    /// 测试样例
+    /// DTO类被用来在 表示层 和 应用层 传递数据.查看DTO文档查看更多信息.
+    /// 为了在页面上展示书籍信息,BookDto被用来将书籍数据传递到表示层.
     /// </summary>
-    public class Book : AuditedEntity<Guid>
+    public class BookDto : AuditedEntityDto<Guid>
     {
         public string Name { get; set; }
 

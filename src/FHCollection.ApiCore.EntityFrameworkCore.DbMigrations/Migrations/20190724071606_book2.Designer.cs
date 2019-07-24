@@ -4,14 +4,16 @@ using FHCollection.ApiCore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FHCollection.ApiCore.Migrations
 {
     [DbContext(typeof(ApiCoreMigrationsDbContext))]
-    partial class ApiCoreMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190724071606_book2")]
+    partial class book2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

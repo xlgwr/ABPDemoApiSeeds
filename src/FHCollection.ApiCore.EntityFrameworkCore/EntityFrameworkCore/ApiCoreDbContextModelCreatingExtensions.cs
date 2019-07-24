@@ -42,7 +42,12 @@ namespace FHCollection.ApiCore.EntityFrameworkCore
             builder.Entity<Book>(b =>
             {
                 b.ToTable(ApiCoreConsts.DefaultDbTablePrefix + "Books", ApiCoreConsts.DefaultDbSchema);
-                b.ConfigureAuditedAggregateRoot(); //auto configure for the base class props
+                b.ConfigureAuditedAggregateRoot(); //auto configure for the base class props 
+
+                //b.ConfigureAudited();
+                //b.ConfigureExtraProperties();
+                //b.ConfigureConcurrencyStamp();
+
                 b.Property(x => x.Name).IsRequired().HasMaxLength(128);
             });
         }

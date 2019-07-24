@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using FHCollection.ApiCore.EntityFrameworkCore; 
+using FHCollection.ApiCore.EntityFrameworkCore;
 using StackExchange.Redis;
 using Swashbuckle.AspNetCore.Swagger;
 using Volo.Abp;
@@ -18,6 +18,7 @@ using Volo.Abp.MultiTenancy;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.AspNetCore.Mvc;
 
 namespace FHCollection.ApiCore
 {
@@ -43,6 +44,7 @@ namespace FHCollection.ApiCore
             {
                 options.UseSqlServer();
             });
+
 
             //Configure<MultiTenancyOptions>(options =>
             //{
@@ -97,6 +99,17 @@ namespace FHCollection.ApiCore
                     .AddDataProtection()
                     .PersistKeysToStackExchangeRedis(redis, "ApiCore-Protection-Keys");
             }
+
+            //自动API控制器
+            Configure<AbpAspNetCoreMvcOptions>(options =>
+            {
+                options
+                    .ConventionalControllers
+                    .Create(typeof(ApiCoreApplicationModule).Assembly, opts =>
+                     {
+                         opts.RootPath = "fh/api";
+                     });
+            });
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
